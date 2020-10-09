@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import SideBar from "./SideBar";
 import ManifestList from "./Manifest-List";
 import ManifestPopUp from "./Manifest-Pop-Up";
+import Text from "./Text"
 import "./style.scss";
 
 import { getData } from "../services/data-services";
@@ -27,7 +28,12 @@ const Manifest = () => {
         <SideBar onSelectSearchBox={handleSearchBox} />
         <div className="main-container">
           <Switch>
-            <Route path="/manifest/filter"></Route>
+            <Route path="/manifest/filter/:filter/:id">
+              <Text />
+            </Route>
+            <Route path="/manifest/filter">
+              <ManifestList data={data} />
+            </Route>
             <Route path="/manifest/:id">
               <ManifestPopUp />
             </Route>
